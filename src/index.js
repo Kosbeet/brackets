@@ -1,7 +1,7 @@
 module.exports = function check(str, bracketsConfig) {
   const open = bracketsConfig.map(([key]) => key);
   const close = Object.fromEntries(
-    bracketsConfig.map((elem) => elem.reverse())
+    bracketsConfig.map(([bracketC, bracketO]) => [bracketO, bracketC])
   );
   const same = bracketsConfig
     .filter(([key, value]) => key === value)
@@ -26,6 +26,5 @@ module.exports = function check(str, bracketsConfig) {
       }
     }
   }
-  console.log(stack, 'stack');
   return stack.length === 0;
 };
